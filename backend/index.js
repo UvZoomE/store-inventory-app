@@ -5,11 +5,11 @@ const app = express()
 
 const PORT = process.env.PORT || 3001 
 
-// if (process.env.NODE_ENV === "production") {
-//   app.use("*", (req, res) => {
-//     res.sendFile(path.join(__dirname, "./build/index.html"));
-//   });
-// }
+if (process.env.NODE_ENV === "production") {
+  app.use("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "./build/index.html"));
+  });
+}
 
 const usersRouter = require('./controllers/users')
 const loginRouter = require('./controllers/login')
