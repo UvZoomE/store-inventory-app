@@ -40,6 +40,7 @@ export default function BasicTable() {
     const getAllProducts = async () => {
       const allProducts = await axios.get(baseUrl)
       setSavedData(allProducts.data)
+      console.log(savedUser)
       const specificPost = savedData.map(() => false);
       setEditPost({ specificPost });
       setFullView({ specificPost })
