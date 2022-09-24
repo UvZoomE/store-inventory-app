@@ -21,6 +21,7 @@ export default function ViewAll() {
   useEffect(() => {
     const getAllProducts = async () => {
       const allProducts = await axios.get(baseUrl)
+      console.log(allProducts)
       setSavedData(allProducts.data)
       const specificPost = savedData.map(() => false);
       setFullView({ specificPost });
