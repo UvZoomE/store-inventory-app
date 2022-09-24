@@ -40,7 +40,6 @@ export default function BasicTable() {
     const getAllProducts = async () => {
       const allProducts = await axios.get(baseUrl)
       setSavedData(allProducts.data)
-      console.log(savedUser)
       const specificPost = savedData.map(() => false);
       setEditPost({ specificPost });
       setFullView({ specificPost })
@@ -104,7 +103,7 @@ export default function BasicTable() {
               key={row.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              {row.userId === savedUser.user.id ? 
+              {savedUser && row.userId === savedUser.user.id ? 
               <>
               <IconButton onClick={(e) => handleDeleteOfProduct(e, row.id)}>
                 <DeleteIcon />
