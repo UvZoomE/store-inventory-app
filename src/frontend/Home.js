@@ -103,7 +103,7 @@ export default function BasicTable() {
               key={row.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              {savedUser && row.userId === savedUser.user.id ? 
+              {savedUser.user.id && row.userId === savedUser.user.id ? 
               <>
               <IconButton onClick={(e) => handleDeleteOfProduct(e, row.id)}>
                 <DeleteIcon />
