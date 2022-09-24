@@ -10,9 +10,11 @@ const CreateAccount = () => {
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
 
+  const baseUrl = process.env.NODE_ENV === "production" ? "/api/users" : "http://localhost:3001/api/users"
+
   const handleUserInformation = async (e) => {
     e.preventDefault()
-    const response = await axios.post('http://localhost:3001/api/users', {firstName,
+    const response = await axios.post(baseUrl, {firstName,
   lastName, username, password})
   window.localStorage.setItem(
     "loggedAppUser",

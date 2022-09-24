@@ -32,14 +32,13 @@ export default function BasicTable() {
     specificPost: []
   })
   const navigate = useNavigate();
-  console.log(savedData)
-  console.log(editPost.specificPost)
+  const baseUrl = process.env.NODE_ENV === "production" ? "/api/products" : "http://localhost:3001/api/products"
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("loggedAppUser"))
     setSavedUser(user)
     const getAllProducts = async () => {
-      const allProducts = await axios.get('http://localhost:3001/api/products')
+      const allProducts = await axios.get(baseUrl)
       setSavedData(allProducts.data)
       const specificPost = savedData.map(() => false);
       setEditPost({ specificPost });
@@ -57,13 +56,13 @@ export default function BasicTable() {
       productQuantity,
       userId
     }
-    await axios.post('http://localhost:3001/api/products', object)
+    await axios.post(baseUrl, object)
     setEditToggle(!editToggle)
   }
 
   const handleDeleteOfProduct = async (e, productId) => {
     e.preventDefault()
-    await axios.delete(`http://localhost:3001/api/products/${productId}`)
+    await axios.delete(`${baseUrl}/${productId}`)
     setEditToggle(!editToggle)
   }
 
@@ -74,7 +73,7 @@ export default function BasicTable() {
       newProductDescription,
       newProductQuantity
     }
-    await axios.put(`http://localhost:3001/api/products/${productId}`, object)
+    await axios.put(`${baseUrl}/${productId}`, object)
     setEditToggle(!editToggle)
   }
 

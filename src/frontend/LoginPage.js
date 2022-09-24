@@ -7,10 +7,11 @@ const LoginPage = () => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
+  const baseUrl = process.env.NODE_ENV === "production" ? "/api/login" : "http://localhost:3001/api/login"
 
   const handleLogin = async (e) => {
     e.preventDefault()
-    const response = await axios.post('http://localhost:3001/api/login', {username, password})
+    const response = await axios.post(baseUrl, {username, password})
     window.localStorage.setItem(
       "loggedAppUser",
       JSON.stringify(response.data) // Setting localStorage allows user to make posts on account later and the posts requests will be sent to different route and that route will contain a verify function to verify that the user is authenticated to make posts. This implementation will occur whenever I get the home page up and running and I can grab the token via a localstore.getItem()

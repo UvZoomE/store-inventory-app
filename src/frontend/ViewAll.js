@@ -16,11 +16,11 @@ export default function ViewAll() {
   const [fullView, setFullView] = useState({
     specificPost: []
   })
-  console.log(savedData)
+  const baseUrl = process.env.NODE_ENV === "production" ? "/api/products" : "http://localhost:3001/api/products"
 
   useEffect(() => {
     const getAllProducts = async () => {
-      const allProducts = await axios.get('http://localhost:3001/api/products')
+      const allProducts = await axios.get(baseUrl)
       setSavedData(allProducts.data)
       const specificPost = savedData.map(() => false);
       setFullView({ specificPost });
