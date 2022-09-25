@@ -56,7 +56,7 @@ export default function ViewAll() {
               }}>
                 <VisibilityIcon />
               </IconButton> : "" }
-              <TableCell>{row.userId}</TableCell>
+              {row.productDescription.length > 100 ? "" : <TableCell>{row.userId}</TableCell>}
               <TableCell>{row.productName}</TableCell>
               {row.productDescription.length > 100 && !fullView.specificPost[i] ? <TableCell>{row.productDescription.substring(0, 99)}...</TableCell> : 
               <TableCell>{row.productDescription}</TableCell>}
