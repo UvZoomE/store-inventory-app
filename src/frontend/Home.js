@@ -31,7 +31,6 @@ export default function BasicTable() {
   const [fullView, setFullView] = useState({
     specificPost: []
   })
-  const navigate = useNavigate();
   const baseUrl = process.env.NODE_ENV === "production" ? "/api/products" : "http://localhost:3001/api/products"
 
   useEffect(() => {
@@ -49,7 +48,7 @@ export default function BasicTable() {
 
   const handleNewProductInformation = async (e) => {
     e.preventDefault()
-    const userId = savedUser.user?.id
+    const userId = savedUser.user.id
     const object = {
       productName,
       productDescription,
