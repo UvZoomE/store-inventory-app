@@ -49,7 +49,7 @@ export default function BasicTable() {
 
   const handleNewProductInformation = async (e) => {
     e.preventDefault()
-    const userId = savedUser.user.id
+    const userId = savedUser.user?.id
     const object = {
       productName,
       productDescription,
