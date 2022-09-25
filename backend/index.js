@@ -9,7 +9,7 @@ const productsRouter = require('./controllers/products')
 const PORT = process.env.PORT || 3001 
 
 const corsOptions ={
-  origin:'http://localhost:3000', 
+  origin: process.env.NODE_ENV === "production" ? "pacific-sea-90725.herokuapp.com" : "http://localhost:3000", 
   credentials:true,            //access-control-allow-credentials:true
   optionSuccessStatus:200
 }
