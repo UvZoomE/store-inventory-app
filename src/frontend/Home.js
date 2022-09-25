@@ -35,6 +35,7 @@ export default function BasicTable() {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("loggedAppUser"))
+    console.log(user)
     if (user.user) {
       setSavedUser(user.user)
     } else {
