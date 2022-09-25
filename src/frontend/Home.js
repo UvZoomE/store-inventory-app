@@ -12,7 +12,7 @@ import Paper from '@mui/material/Paper';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 
 export default function BasicTable() {
@@ -35,12 +35,7 @@ export default function BasicTable() {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("loggedAppUser"))
-    console.log(user)
-    if (user.user) {
-      setSavedUser(user.user)
-    } else {
-      setSavedUser(user)
-    }
+    setSavedUser(user.user)
     const getAllProducts = async () => {
       const allProducts = await axios.get(baseUrl)
       setSavedData(allProducts.data)

@@ -17,7 +17,7 @@ usersRouter.post('/', async (req, res) => {
     password,
   }
   const user = await User.create(body)
-  res.json(user)
+  res.json({ user: user })
 })
 
 module.exports = usersRouter
