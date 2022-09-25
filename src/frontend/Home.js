@@ -35,7 +35,11 @@ export default function BasicTable() {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("loggedAppUser"))
-    setSavedUser(user)
+    if (user.user) {
+      setSavedUser(user.user)
+    } else {
+      setSavedUser(user)
+    }
     const getAllProducts = async () => {
       const allProducts = await axios.get(baseUrl)
       setSavedData(allProducts.data)
